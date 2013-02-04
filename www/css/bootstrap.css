@@ -9,6 +9,16 @@
     font-style: normal;
 }
 
+html {
+  padding:0;
+  margin:0;
+}
+
+body {
+  padding:0;
+  margin:0;
+}
+
 h1,h2,h3,h4,.lead {
   font-family:junctionregular, lucida grande,lucida sans console,sans-serif;
   font-weight:normal;
