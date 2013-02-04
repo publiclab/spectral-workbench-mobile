@@ -9,16 +9,6 @@
     font-style: normal;
 }
 
-html {
-  padding:0;
-  margin:0;
-}
-
-body {
-  padding:0;
-  margin:0;
-}
-
 h1,h2,h3,h4,.lead {
   font-family:junctionregular, lucida grande,lucida sans console,sans-serif;
   font-weight:normal;
@@ -27,6 +17,9 @@ h1,h2,h3,h4,.lead {
 #header {
   padding:8px 0 3px 0;
   height:60px;
+}
+#header.navbar-inner {
+  margin-right:-40px;
 }
 #header #logo img {
   float:left;
