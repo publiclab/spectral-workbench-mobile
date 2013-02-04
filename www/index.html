@@ -34,6 +34,14 @@ and justice issues. PLOTS provides an online research space for citizens, linkin
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
+  <script type="text/javascript" src="phonegap.js"></script>
+  <script src="barcodescanner.js"></script>
+  <script type="text/javascript" src="js/application.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript">
+    app.initialize();
+  </script>
+
 <style>
   .navbar-fixed-top .nav li {
     padding-top:3px;
@@ -45,8 +53,8 @@ and justice issues. PLOTS provides an online research space for citizens, linkin
   <div class="navbar-inner" style="padding:0 10px;">
     <a class="brand" href="/"><img style="padding:-2px;width:20px;" src="img/logo-small.png" /></a>
     <ul class="nav">
-      <li><a href="#capture" data-toggle="tab">Capture</a></li>
-      <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
+      <li class="active"><a href="#capture" data-toggle="tab">Capture</a></li>
+      <li><a href="#settings" data-toggle="tab">Settings</a></li>
     </ul>
     <a style="margin-left:6px;" href="http://publiclaboratory.org/wiki/spectral-workbench" class="btn"><i class="icon icon-question-sign"></i></a>
   </div>
@@ -55,23 +63,11 @@ and justice issues. PLOTS provides an online research space for citizens, linkin
 <div class="tab-content container">
 <div id="capture" class="tab-pane active">
 
-  <div class="app">
-    <h1>SpectralWorkbench Mobile</h1>
-    <div id="deviceready">
-      <p class="status pending blink">Connecting to Device</p>
-      <p class="status complete blink hide">Device is Ready</p>
-    </div>
-  </div>
-  <script type="text/javascript" src="phonegap.js"></script>
-  <script src="barcodescanner.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
-  <script type="text/javascript">
-    app.initialize();
-  </script>
+  <h1>SpectralWorkbench Mobile</h1>
 
   <div class="btn-group">
   
-    <a class="btn btn-large btn-primary" href="" onClick="navigator.camera.getPicture(function(r){alert(r)},function(){})">Capture</a> 
+    <a class="btn btn-large btn-primary" href="" onClick="navigator.camera.getPicture($M.save)">Capture</a> 
     <a class="btn btn-large" data-toggle="tab" href="#help"><i class="icon icon-question-sign"></i> Help</a>
   
   </div>
@@ -83,73 +79,75 @@ and justice issues. PLOTS provides an online research space for citizens, linkin
     <input type="checkbox" name="rgb-toggle" id="rgb-toggle" onChange="$W.toggle_mode()" />
   </form>
 
+  <img id="captured" style="display:none;" class="img img-rounded" src="" />
+
 </div>
 
 <div id="settings" class="tab-pane">
 
-    <p><a href="/login">Log in</a> to use a recent calibration</p>
-    <p>This interface works only on <a href="https://play.google.com/store/apps/details?id=com.opera.browser">Opera Mobile</a>, the only mobile browser currently supporting the MediaStream API</p>
+  <p><a href="/login">Log in</a> to use a recent calibration</p>
+  <p>This interface works only on <a href="https://play.google.com/store/apps/details?id=com.opera.browser">Opera Mobile</a>, the only mobile browser currently supporting the MediaStream API</p>
 
 </div>
 
 <div id="save" class="tab-pane">
   <h2>Save this spectrum</h2>
 
-	<p>You must be <a target="_blank" href="/login">logged in</a> to save spectra.</p>
+    <p>You must be <a target="_blank" href="/login">logged in</a> to save spectra.</p>
 
 
-<form class="form" action="/spectrums" method="post" id="saveForm" target="_blank" onSubmit="$W.cancelSave();window.location='#page1'">
-	<input placeholder="Title (required)" name="spectrum[title]" id="spectrum_notes" type="text" /><br />
-        <div class="input-prepend">
-          <span class="add-on"><i class="icon-tags"></i></span>
-          <input name="tags" id="spectrum_tags" type="text" placeholder="mobile, soil, sunlight" data-provide="typeahead" data-source="['calibration','soil','']">
-        </div>
-	<textarea placeholder="Notes" name="spectrum[notes]" id="spectrum_notes"></textarea><br />
-	<input name="dataurl" type="hidden" id="dataurl" />
-	<input name="geotag" type="hidden" id="geotag" />
-	<input name="lat" type="hidden" id="lat" />
-	<input name="lon" type="hidden" id="lon" />
+    <form class="form" action="/spectrums" method="post" id="saveForm" target="_blank" onSubmit="$W.cancelSave();window.location='#page1'">
+      <input placeholder="Title (required)" name="spectrum[title]" id="spectrum_notes" type="text" /><br />
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-tags"></i></span>
+        <input name="tags" id="spectrum_tags" type="text" placeholder="mobile, soil, sunlight" data-provide="typeahead" data-source="['calibration','soil','']">
+      </div>
+      <textarea placeholder="Notes" name="spectrum[notes]" id="spectrum_notes"></textarea><br />
+      <input name="dataurl" type="hidden" id="dataurl" />
+      <input name="geotag" type="hidden" id="geotag" />
+      <input name="lat" type="hidden" id="lat" />
+      <input name="lon" type="hidden" id="lon" />
 	
-</form>
-<a class="btn btn-large" href="#capture" onClick="$W.cancelSave()">&laquo; Back</a>
-<a class="btn btn-primary btn-large" href="javascript:void(0);" onClick="$('#saveForm').submit()">Save</a>
+    </form>
+    <a class="btn btn-large" href="#capture" onClick="$W.cancelSave()">&laquo; Back</a>
+    <a class="btn btn-primary btn-large" href="javascript:void(0);" onClick="$('#saveForm').submit()">Save</a>
+
+  </div>
 
 </div>
 
-</div>
-
-<script> (function () { 
+  <script> (function () { 
   
-})() </script>
+  })() </script>
 
 
-    <footer style="margin-bottom:200px;">
+  <footer style="margin-bottom:200px;">
 
-      <hr />
-      <div class="span4">
-        <p><b>Spectral Workbench</b> is <a href="https://github.com/jywarren/spectral-workbench">open source software</a></p>
-        <p>Report bugs and help improve this software <a href="https://github.com/jywarren/spectral-workbench/issues/new">on Github</a></p>
-      </div>
+    <hr />
+    <div class="span4">
+      <p><b>Spectral Workbench</b> is <a href="https://github.com/jywarren/spectral-workbench">open source software</a></p>
+      <p>Report bugs and help improve this software <a href="https://github.com/jywarren/spectral-workbench/issues/new">on Github</a></p>
+    </div>
 
-      <div class="span4">
-        <p>Follow <b>SpectralWB</b> on Twitter to see code updates: <a href="https://twitter.com/SpectralWB" class="twitter-follow-button" data-show-count="false">Follow @SpectralWB</a></p>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      </div>
+    <div class="span4">
+      <p>Follow <b>SpectralWB</b> on Twitter to see code updates: <a href="https://twitter.com/SpectralWB" class="twitter-follow-button" data-show-count="false">Follow @SpectralWB</a></p>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
 
-    </footer>
+  </footer>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="bootstrap/js/bootstrap.typeahead.js"></script>
-    <script>
-      (function() {
-        $("[rel=tooltip]").tooltip()
-        $("[rel=popover]").popover()
-      })()
-    </script>
-    <script type="text/javascript">
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/bootstrap.typeahead.js"></script>
+  <script>
+    (function() {
+      $("[rel=tooltip]").tooltip()
+      $("[rel=popover]").popover()
+    })()
+  </script>
+  <script type="text/javascript">
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-7636025-2']);
@@ -162,6 +160,6 @@ and justice issues. PLOTS provides an online research space for citizens, linkin
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
-    </script>
+  </script>
   </body>
 </html>

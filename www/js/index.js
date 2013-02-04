@@ -17,8 +17,9 @@
  * under the License.
  */
 var app = {
-    initialize: function() {
+    initialize: function(args) {
         this.bind();
+        $M.initialize(args);
     },
     bind: function() {
         document.addEventListener('deviceready', this.deviceready, false);
