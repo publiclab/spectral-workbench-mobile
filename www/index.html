@@ -20,11 +20,17 @@ and justice issues. PLOTS provides an online research space for citizens, linkin
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <script src="js/application.js" type="text/javascript"></script>
-    <script src="js/jquery.min.js"></script>
-<!--    <script language="javascript" type="text/javascript" src="js/flot/jquery.js"></script> -->
+<!--
+    <script src="js/getUserMedia.js"> </script>
+-->
+    <script src="js/jquery.min.js"> </script>
+<!--
+    <script src="js/capture.js"> </script>
+    <script src="js/api.js"> </script>
     <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.js"></script> 
     <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.crosshair.js"></script>
+    <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.threshold.min.js"></script>
+-->
 
   </head>
 
@@ -38,34 +44,10 @@ and justice issues. PLOTS provides an online research space for citizens, linkin
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
-    <script src="js/getUserMedia.js"> </script>
-    <script src="js/jquery.min.js"> </script>
-    <script src="js/capture.js"> </script>
-    <script src="js/api.js"> </script>
-    <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.js"></script> 
-    <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.crosshair.js"></script>
-    <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.threshold.min.js"></script>
-
 <style>
   .navbar-fixed-top .nav li {
     padding-top:3px;
     font-family:junction,sans-serif;
-  }
-  #webcam-msg {
-    position:absolute;
-    background:#eee;
-    color:#aaa;
-    text-align:center;
-    height:240px;
-    width:320px;
-    font-size:14px;
-  }
-  #webcam-msg p {
-    padding:100px 20px; 
-  }
-  #webcam {
-    position:absolute;
-    z-index:1;
   }
 </style>
 
